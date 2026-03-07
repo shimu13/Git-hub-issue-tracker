@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>GitHub Issues Tracker</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-100">
+
+<!-- Navbar -->
+
+<div class="flex justify-between items-center p-4 bg-white shadow">
+
+<h1 class="text-xl font-bold">
+Git Hub Issues Tracker
+</h1>
+
+<div>
+
+<input id="searchInput"
+class="border p-2 rounded"
+placeholder="Search issue">
+
+<button onclick="searchIssue()"
+class="bg-blue-500 text-white px-4 py-2 rounded">
+
+Search
+
+</button>
+
+</div>
+
+</div>
+
+<!-- Tabs -->
+
+<div class="flex gap-3 p-4">
+
+<button onclick="loadIssues('all')" class="btnTab bg-blue-500 text-white px-4 py-2 rounded">
+All
+</button>
+
+<button onclick="loadIssues('open')" class="btnTab bg-gray-300 px-4 py-2 rounded">
+Open
+</button>
+
+<button onclick="loadIssues('closed')" class="btnTab bg-gray-300 px-4 py-2 rounded">
+Closed
+</button>
+
+</div>
+
+<!-- Loader -->
+
+<div id="loader" class="text-center hidden">
+Loading...
+</div>
+
+<!-- Issues Container -->
+
+<div id="issuesContainer"
+class="grid md:grid-cols-4 sm:grid-cols-2 gap-4 p-4">
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
