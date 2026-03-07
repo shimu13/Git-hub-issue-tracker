@@ -1,123 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<title>Issues Tracker</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Issues Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-<body class="bg-gray-100">
+<div class="w-full max-w-3xl bg-white p-10 rounded-xl shadow">
 
-<!-- Navbar -->
+  <!-- Logo + Title -->
+  <div class="flex flex-col items-center mb-8">
+    <img src="assets/github-logo.png" class="w-16 mb-3">
+    <h1 class="text-2xl font-bold">GitHub Issues Tracker</h1>
+    <p class="text-gray-500">Sign in to manage your issues</p>
+  </div>
 
-<nav class="bg-white shadow p-4 flex justify-between items-center">
+  <!-- Username -->
+  <label class="font-medium">Username</label>
+  <input id="username" type="text" placeholder="Enter Username"
+         class="w-full border rounded-lg p-3 mt-2 mb-1">
+  <p class="text-sm text-purple-600 mb-4">Default: admin</p>
 
-<h1 class="text-xl font-bold">
-Issues Tracker
-</h1>
+  <!-- Password -->
+  <label class="font-medium">Password</label>
+  <input id="password" type="password" placeholder="Enter Password"
+         class="w-full border rounded-lg p-3 mt-2 mb-1">
+  <p class="text-sm text-purple-600 mb-6">Default: admin123</p>
 
-<div class="flex gap-2">
+  <!-- Sign In Button -->
+  <button onclick="login()"
+          class="w-full py-3 rounded-lg text-white font-semibold
+                 bg-gradient-to-r from-purple-600 to-indigo-600">
+    Sign In
+  </button>
 
-<input
-id="searchInput"
-type="text"
-placeholder="Search issues"
-class="border p-2 rounded">
+  <!-- OR Section -->
+  <div class="flex items-center gap-4 my-6">
+    <hr class="flex-1">
+    <span class="text-gray-500">OR</span>
+    <hr class="flex-1">
+  </div>
 
-<button
-onclick="searchIssue()"
-class="bg-blue-500 text-white px-4 rounded">
-
-Search
-
-</button>
-
-</div>
-
-</nav>
-
-<!-- Tabs -->
-
-<div class="flex gap-4 p-4">
-
-<button
-onclick="loadIssues('all')"
-class="tabBtn bg-blue-500 text-white px-4 py-2 rounded">
-
-All
-
-</button>
-
-<button
-onclick="loadIssues('open')"
-class="tabBtn bg-gray-300 px-4 py-2 rounded">
-
-Open
-
-</button>
-
-<button
-onclick="loadIssues('closed')"
-class="tabBtn bg-gray-300 px-4 py-2 rounded">
-
-Closed
-
-</button>
+  <!-- Demo Credentials -->
+  <p class="text-center text-gray-500 mb-3">Demo Credentials:</p>
+  <div class="bg-gray-100 p-4 rounded-lg text-center">
+    <p><strong>Username:</strong> admin</p>
+    <p><strong>Password:</strong> admin123</p>
+  </div>
 
 </div>
 
-<!-- Loader -->
-
-<div id="loader" class="text-center hidden">
-
-Loading Issues...
-
-</div>
-
-<!-- Issues Grid -->
-
-<div
-id="issuesContainer"
-class="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 p-4">
-
-</div>
-
-<!-- Modal -->
-
-<div
-id="modal"
-class="fixed inset-0 bg-black bg-opacity-40 hidden flex items-center justify-center">
-
-<div class="bg-white p-6 rounded w-96">
-
-<h2 id="modalTitle" class="text-xl font-bold mb-2"></h2>
-
-<p id="modalDesc" class="text-gray-600 mb-2"></p>
-
-<p id="modalStatus"></p>
-<p id="modalAuthor"></p>
-<p id="modalPriority"></p>
-<p id="modalLabel"></p>
-<p id="modalDate"></p>
-
-<button
-onclick="closeModal()"
-class="mt-4 bg-red-500 text-white px-4 py-2 rounded">
-
-Close
-
-</button>
-
-</div>
-
-</div>
+<!-- Auth JS -->
 <script src="auth.js"></script>
-<script src="script.js"></script>
 
 </body>
 </html>
