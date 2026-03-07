@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 
-<title>GitHub Issues Tracker</title>
+<title>Issues Tracker</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -15,20 +15,23 @@
 
 <!-- Navbar -->
 
-<div class="flex justify-between items-center p-4 bg-white shadow">
+<nav class="bg-white shadow p-4 flex justify-between items-center">
 
 <h1 class="text-xl font-bold">
-Git Hub Issues Tracker
+Issues Tracker
 </h1>
 
-<div>
+<div class="flex gap-2">
 
-<input id="searchInput"
-class="border p-2 rounded"
-placeholder="Search issue">
+<input
+id="searchInput"
+type="text"
+placeholder="Search issues"
+class="border p-2 rounded">
 
-<button onclick="searchIssue()"
-class="bg-blue-500 text-white px-4 py-2 rounded">
+<button
+onclick="searchIssue()"
+class="bg-blue-500 text-white px-4 rounded">
 
 Search
 
@@ -36,22 +39,34 @@ Search
 
 </div>
 
-</div>
+</nav>
 
 <!-- Tabs -->
 
-<div class="flex gap-3 p-4">
+<div class="flex gap-4 p-4">
 
-<button onclick="loadIssues('all')" class="btnTab bg-blue-500 text-white px-4 py-2 rounded">
+<button
+onclick="loadIssues('all')"
+class="tabBtn bg-blue-500 text-white px-4 py-2 rounded">
+
 All
+
 </button>
 
-<button onclick="loadIssues('open')" class="btnTab bg-gray-300 px-4 py-2 rounded">
+<button
+onclick="loadIssues('open')"
+class="tabBtn bg-gray-300 px-4 py-2 rounded">
+
 Open
+
 </button>
 
-<button onclick="loadIssues('closed')" class="btnTab bg-gray-300 px-4 py-2 rounded">
+<button
+onclick="loadIssues('closed')"
+class="tabBtn bg-gray-300 px-4 py-2 rounded">
+
 Closed
+
 </button>
 
 </div>
@@ -59,17 +74,50 @@ Closed
 <!-- Loader -->
 
 <div id="loader" class="text-center hidden">
-Loading...
+
+Loading Issues...
+
 </div>
 
-<!-- Issues Container -->
+<!-- Issues Grid -->
 
-<div id="issuesContainer"
-class="grid md:grid-cols-4 sm:grid-cols-2 gap-4 p-4">
+<div
+id="issuesContainer"
+class="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 p-4">
+
+</div>
+
+<!-- Modal -->
+
+<div
+id="modal"
+class="fixed inset-0 bg-black bg-opacity-40 hidden flex items-center justify-center">
+
+<div class="bg-white p-6 rounded w-96">
+
+<h2 id="modalTitle" class="text-xl font-bold mb-2"></h2>
+
+<p id="modalDesc" class="text-gray-600 mb-2"></p>
+
+<p id="modalStatus"></p>
+<p id="modalAuthor"></p>
+<p id="modalPriority"></p>
+<p id="modalLabel"></p>
+<p id="modalDate"></p>
+
+<button
+onclick="closeModal()"
+class="mt-4 bg-red-500 text-white px-4 py-2 rounded">
+
+Close
+
+</button>
+
+</div>
+
 </div>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
