@@ -1,52 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Issues Tracker</title>
+
+<title>Issues Dashboard</title>
+
 <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
+
 <body class="bg-gray-100">
 
 <!-- Navbar -->
-<nav class="bg-white shadow p-4 flex justify-between items-center">
-  <h1 class="text-xl font-bold">Issues Tracker</h1>
-  <div class="flex gap-2">
-    <input id="searchInput" type="text" placeholder="Search issues" class="border p-2 rounded">
-    <button onclick="searchIssue()" class="bg-blue-500 text-white px-4 rounded">Search</button>
-  </div>
-</nav>
+
+<div class="bg-white shadow p-4 flex justify-between">
+
+<div class="flex items-center gap-3">
+  <img src="assets/github-logo.png" alt="GitHub Logo" class="w-6 h-6">
+  <h1 class="font-bold text-xl">Github Issues Tracker</h1>
+</div>
+<div class="flex gap-2">
+
+<input
+id="searchInput"
+class="border p-2 rounded"
+placeholder="Search issue">
+
+<button
+onclick="searchIssue()"
+class="bg-blue-500 text-white px-4 py-2 rounded">
+
+Search
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="p-6">
+
 
 <!-- Tabs -->
-<div class="flex gap-4 p-4">
-  <button onclick="loadIssues('all', this)" class="tabBtn bg-blue-500 text-white px-4 py-2 rounded">All</button>
-  <button onclick="loadIssues('open', this)" class="tabBtn bg-gray-300 px-4 py-2 rounded">Open</button>
-  <button onclick="loadIssues('closed', this)" class="tabBtn bg-gray-300 px-4 py-2 rounded">Closed</button>
+
+<div class="flex gap-2 mb-4">
+
+<button
+class="tabBtn bg-blue-500 text-white px-4 py-2 rounded"
+onclick="loadIssues('all',this)">
+
+All
+
+</button>
+
+<button
+class="tabBtn bg-gray-300 px-4 py-2 rounded"
+onclick="loadIssues('open',this)">
+
+Open
+
+</button>
+
+<button
+class="tabBtn bg-gray-300 px-4 py-2 rounded"
+onclick="loadIssues('closed',this)">
+
+Closed
+
+</button>
+
 </div>
+
+
+<!-- Summary -->
+
+<div id="issuesSummary"></div>
+
 
 <!-- Loader -->
-<div id="loader" class="text-center hidden p-4">Loading Issues...</div>
 
-<!-- Issues Grid -->
-<div id="issuesContainer" class="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 p-4"></div>
+<div
+id="loader"
+class="hidden text-center py-4">
 
-<!-- Modal -->
-<div id="modal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center">
-  <div class="bg-white p-6 rounded w-96">
-    <h2 id="modalTitle" class="text-xl font-bold mb-2"></h2>
-    <p id="modalDesc" class="text-gray-600 mb-2"></p>
-    <p id="modalStatus"></p>
-    <p id="modalAuthor"></p>
-    <p id="modalPriority"></p>
-    <p id="modalLabel"></p>
-    <p id="modalDate"></p>
-    <button onclick="closeModal()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Close</button>
-  </div>
+Loading...
+
 </div>
 
-<!-- Scripts -->
-<script src="auth.js"></script>
-<script src="script.js"></script>
 
+<!-- Cards -->
+
+<div
+id="issuesContainer"
+class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+</div>
+
+</div>
+
+
+<!-- Modal -->
+
+<div
+id="modal"
+class="fixed inset-0 bg-black bg-opacity-40 hidden flex items-center justify-center">
+
+<div class="bg-white p-6 rounded w-[400px]">
+
+<h2 id="modalTitle" class="text-xl font-bold"></h2>
+
+<p id="modalDesc"></p>
+
+<p id="modalStatus"></p>
+<p id="modalAuthor"></p>
+<p id="modalPriority"></p>
+<p id="modalLabel"></p>
+<p id="modalDate"></p>
+
+<button
+onclick="closeModal()"
+class="mt-4 bg-red-500 text-white px-4 py-2 rounded">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+<script src="auth.js"></script>
 </body>
 </html>
