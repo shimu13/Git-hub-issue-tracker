@@ -160,7 +160,91 @@ Created: ${new Date(issue.createdAt).toLocaleDateString()}
 </p>
 
 `;
+const issues = [
+{
+id:1,
+title:"Fix Navigation Menu On Mobile Devices",
+description:"The navigation menu doesn't collapse properly on mobile devices.",
+priority:"HIGH",
+labels:["BUG","HELP WANTED"],
+author:"john_doe",
+date:"1/15/2024"
+},
 
+{
+id:2,
+title:"Improve Dashboard UI",
+description:"Dashboard layout needs better spacing.",
+priority:"LOW",
+labels:["ENHANCEMENT"],
+author:"john_doe",
+date:"1/15/2024"
+}
+
+];
+
+const container = document.getElementById("issuesContainer");
+
+issues.forEach(issue => {
+
+let priorityColor = "";
+
+if(issue.priority === "HIGH"){
+priorityColor = "border-red-500 bg-red-100 text-red-500";
+}
+else if(issue.priority === "MEDIUM"){
+priorityColor = "border-yellow-500 bg-yellow-100 text-yellow-600";
+}
+else{
+priorityColor = "border-purple-500 bg-purple-100 text-purple-600";
+}
+
+let labelsHTML = "";
+
+issue.labels.forEach(label =>{
+
+labelsHTML += `
+<span class="text-xs px-2 py-1 rounded-full bg-gray-200">
+${label}
+</span>
+`;
+
+});
+
+const card = document.createElement("div");
+
+card.className = `bg-white rounded-lg shadow-md p-4 border-t-4 ${priorityColor}`;
+
+card.innerHTML = `
+
+<div class="flex justify-between mb-2">
+<span class="text-xs px-3 py-1 rounded-full ${priorityColor}">
+${issue.priority}
+</span>
+</div>
+
+<h2 class="font-semibold text-lg">
+${issue.title}
+</h2>
+
+<p class="text-gray-500 text-sm mt-1">
+${issue.description}
+</p>
+
+<div class="flex gap-2 mt-3">
+${labelsHTML}
+</div>
+
+<div class="text-xs text-gray-400 mt-3">
+#${issue.id} by ${issue.author} <br>
+${issue.date}
+</div>
+
+`;
+
+container.appendChild(card);
+
+});
 card.onclick = () => showIssue(issue.id);
 
 container.appendChild(card);
